@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.5, user-scalable=yes">
+  <title>中彩网 · 杂志专题</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+      background: #f3f7f9;
+      color: #1e2b2f;
+      line-height: 1.7;
+    }
+
+    .page {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 1.5rem 1.2rem 2.5rem;
+    }
+
+    /* 首页横幅 */
+    .hero {
+      background: linear-gradient(145deg, #1d3d44 0%, #275a5f 100%);
+      border-radius: 2.5rem 2.5rem 2rem 2rem;
+      padding: 2.8rem 2rem 2.6rem;
+      margin-bottom: 2.8rem;
+      box-shadow: 0 8px 20px rgba(27, 67, 72, 0.12);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: -40px;
+      right: -40px;
+      width: 200px;
+      height: 200px;
+      background: radial-gradient(circle, rgba(255,255,255,0.08) 0%, transparent 70%);
+      border-radius: 50%;
+    }
+
+    .hero h1 {
+      font-size: 2.6rem;
+      font-weight: 500;
+      letter-spacing: 0.02em;
+      color: white;
+      line-height: 1.2;
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero h1 span {
+      display: inline-block;
+      background: #c9e9e6;
+      color: #1d3d44;
+      font-weight: 600;
+      padding: 0.1rem 1rem;
+      border-radius: 40px;
+      font-size: 1.2rem;
+      vertical-align: middle;
+      margin-left: 0.4rem;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+    }
+
+    .hero p {
+      color: #d2ece9;
+      max-width: 520px;
+      margin-top: 1.4rem;
+      font-size: 1.05rem;
+      position: relative;
+      z-index: 1;
+    }
+
+    /* 背景说明卡片 */
+    .intro-card {
+      background: white;
+      border-radius: 2rem;
+      padding: 2rem 2rem 2.4rem;
+      margin-bottom: 2rem;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.02), 0 0 0 1px rgba(55, 94, 97, 0.06);
+      transition: box-shadow 0.15s;
+    }
+
+    .intro-card:hover {
+      box-shadow: 0 8px 18px rgba(33, 84, 84, 0.06), 0 0 0 1px #9ec7c5;
+    }
+
+    .intro-card h2 {
+      font-size: 1.6rem;
+      font-weight: 450;
+      color: #1c464b;
+      border-left: 6px solid #4d9c9b;
+      padding-left: 1rem;
+      margin-bottom: 1rem;
+    }
+
+    .intro-card p {
+      margin-bottom: 1rem;
+      font-size: 1rem;
+      color: #2c4146;
+    }
+
+    .intro-card p:last-child {
+      margin-bottom: 0;
+    }
+
+    /* 三段介绍 · 网格卡片 */
+    .feature-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 1.6rem;
+      margin: 2.2rem 0;
+    }
+
+    .feature-card {
+      background: #ffffff;
+      border-radius: 1.8rem;
+      padding: 1.8rem 1.5rem 2rem;
+      box-shadow: 0 2px 10px rgba(0, 20, 20, 0.03), 0 0 0 1px #e0efed;
+      transition: all 0.2s ease;
+    }
+
+    .feature-card:hover {
+      transform: translateY(-4px);
+      border-color: #6eb0ae;
+      box-shadow: 0 8px 20px rgba(44, 110, 110, 0.08);
+    }
+
+    .feature-card .icon {
+      font-size: 2rem;
+      margin-bottom: 0.6rem;
+      line-height: 1;
+    }
+
+    .feature-card h3 {
+      font-size: 1.25rem;
+      font-weight: 500;
+      color: #163c40;
+      margin-bottom: 0.65rem;
+    }
+
+    .feature-card p {
+      font-size: 0.95rem;
+      color: #385156;
+    }
+
+    /* 场景/提示 */
+    .note-section {
+      background: #e8f2f0;
+      border-radius: 2rem;
+      padding: 1.8rem 2rem 2rem;
+      margin: 2.2rem 0 2.6rem;
+    }
+
+    .note-section h3 {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      font-weight: 450;
+      color: #153d41;
+      font-size: 1.25rem;
+      margin-bottom: 1rem;
+    }
+
+    .note-section ul {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.6rem;
+    }
+
+    .note-section li {
+      padding-left: 0.2rem;
+      color: #294b51;
+      font-size: 0.96rem;
+      display: flex;
+      align-items: flex-start;
+      gap: 0.6rem;
+    }
+
+    .note-section li::before {
+      content: "▹";
+      color: #4d9c9b;
+      font-size: 1.2rem;
+      line-height: 1;
+    }
+
+    .faq-mini {
+      background: white;
+      border-radius: 1.6rem;
+      padding: 1.6rem 1.6rem 1.8rem;
+      margin-top: 1.5rem;
+    }
+
+    .faq-mini p {
+      font-size: 0.95rem;
+      color: #2f4e53;
+      margin-bottom: 0.4rem;
+    }
+
+    .faq-mini p strong {
+      color: #1a4248;
+    }
+
+    .faq-mini .q {
+      margin-top: 0.6rem;
+    }
+
+    /* 页尾访问提示 */
+    .footer-visit {
+      border-top: 1px solid #c6dbd8;
+      padding-top: 2rem;
+      margin-top: 1rem;
+      text-align: center;
+    }
+
+    .footer-visit p {
+      font-size: 1rem;
+      color: #33565b;
+      max-width: 600px;
+      margin: 0 auto 0.2rem;
+    }
+
+    .footer-visit .inline-link {
+      color: #0f5a5a;
+      font-weight: 500;
+      text-decoration: none;
+      border-bottom: 2px solid #6eb0ae;
+      padding-bottom: 0.1rem;
+      transition: border-color 0.1s, color 0.1s;
+    }
+
+    .footer-visit .inline-link:hover {
+      border-bottom-color: #1b6f6f;
+      color: #073b3b;
+    }
+
+    .footer-note {
+      margin-top: 1.2rem;
+      font-size: 0.85rem;
+      color: #588389;
+    }
+
+    /* 响应式 */
+    @media (max-width: 700px) {
+      .hero {
+        padding: 2rem 1.5rem;
+        border-radius: 2rem;
+      }
+
+      .hero h1 {
+        font-size: 2rem;
+      }
+
+      .hero h1 span {
+        font-size: 1rem;
+        margin-left: 0.3rem;
+        padding: 0.1rem 0.8rem;
+      }
+
+      .intro-card {
+        padding: 1.6rem 1.4rem;
+      }
+
+      .feature-grid {
+        gap: 1.2rem;
+      }
+
+      .note-section {
+        padding: 1.4rem 1.2rem;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .page {
+        padding: 1rem 0.8rem 2rem;
+      }
+
+      .hero h1 {
+        font-size: 1.7rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <!-- 首页横幅 -->
+    <div class="hero">
+      <h1>
+        中彩网
+        <span>指南</span>
+      </h1>
+      <p>一个以稳定访问和清晰索引为思路的专题页，帮助你快速了解平台定位与内容方向。</p>
+    </div>
+
+    <!-- 背景说明 -->
+    <div class="intro-card">
+      <h2>背景与定位</h2>
+      <p>
+        <strong>中彩网</strong> 是一个面向中文用户的在线资源站点，长期提供结构化的分类与信息聚合。本站点采用简洁的内容框架，降低浏览门槛，让访客在较短时间内建立对平台的整体印象。
+      </p>
+      <p>
+        在信息过载的环境下，一个稳定的入口比频繁变动的跳转更能培养信任感。本介绍页以静态说明为主，不追踪、不诱导，仅呈现真实可读的内容摘要。
+      </p>
+    </div>
+
+    <!-- 三段自然介绍 · 网格卡片 -->
+    <div class="feature-grid">
+      <div class="feature-card">
+        <div class="icon">📋</div>
+        <h3>分类归档</h3>
+        <p>栏目依照内容性质区分，涵盖资讯、数据、指南等模块。每一板块均提供独立的概述与链接结构。</p>
+      </div>
+      <div class="feature-card">
+        <div class="icon">🧭</div>
+        <h3>稳定入口</h3>
+        <p>主域名长期维护，页面路径清晰。你可以随时通过 <a href="https://web-cns-zhcw.com" class="inline-link">中彩网</a> 回到首页，或从任意子页导航返回到分类总览。</p>
+      </div>
+      <div class="feature-card">
+        <div class="icon">🔍</div>
+        <h3>信息索引</h3>
+        <p>每个页面均包含上下文操作提示，帮助新访客快速定位所需内容。减少无效点击，专注有效阅读。</p>
+      </div>
+    </div>
+
+    <!-- 场景 + FAQ摘要 -->
+    <div class="note-section">
+      <h3>📌 常见使用场景</h3>
+      <ul>
+        <li>通过首页导航进入各个分类模块，了解站点整体框架。</li>
+        <li>在栏目页中浏览聚合条目，按需筛选感兴趣的主题。</li>
+        <li>返回 <a href="https://web-cns-zhcw.com">中彩网</a> 获取最新更新列表或公告说明。</li>
+      </ul>
+
+      <div class="faq-mini">
+        <p><strong>❓ 这个介绍页和主站是什么关系？</strong></p>
+        <p>这是一个独立撰写的专题说明页，内容经过重新组织，旨在以杂志式的排版展示站点背景与使用方向。主站仍保持原有结构与功能。</p>
+        <p class="q"><strong>❓ 如何查看更多详细内容？</strong></p>
+        <p>直接访问主域名 <a href="https://web-cns-zhcw.com">中彩网</a>，浏览公开页面即可。本页未包含全部信息，仅作摘要参考。</p>
+      </div>
+    </div>
+
+    <!-- 页尾访问提示 -->
+    <div class="footer-visit">
+      <p>
+        如果你希望进一步了解，可以随时打开 
+        <a href="https://web-cns-zhcw.com" class="inline-link">中彩网</a> 
+        查看完整内容。页面保持静态，无自动跳转。
+      </p>
+      <div class="footer-note">
+        —— 杂志专题版 · 认准稳定索引
+      </div>
+    </div>
+  </div>
+</body>
+</html>
